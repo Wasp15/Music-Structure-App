@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Music Player</string>
+    <string name="now_playing_text">Now Playing</string>
+    <string name="local_songs_text">Songs</string>
+    <string name="artists_text_view">Artists</string>
+    <string name="album_text">Albums</string>
+    <string name="search_text">Search</string>
+    <string name="now_playing_label">Now Playing</string>
+    <string name="songs_label">Songs</string>
+    <string name="artists_label">Artists</string>
+    <string name="albums_label">Albums</string>
+    <string name="search_label">Search</string>
+    <string name="search">Search</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+</resources>
+
