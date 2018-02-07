@@ -1,16 +1,25 @@
 package com.enterprises.wasp.musicstructureapp;
 
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SongsFragment extends Fragment {
+
+    private ArrayList<String> songNames = new ArrayList<>();
+    private ArrayList<String> albumNames = new ArrayList<>();
+    private ArrayList<String> artistNames = new ArrayList<>();
 
     public SongsFragment() {
         // Required empty public constructor
@@ -19,9 +28,52 @@ public class SongsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
+        View rootView = inflater.inflate(R.layout.universal_container, container, false);
+        super.onCreate(savedInstanceState);
+        scanDeviceForMp3Files();
+
+        return rootView;
+    }
+
+    private void scanDeviceForMp3Files() {
+        String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
+        String[] projection = {
+                MediaStore.Audio.Media.TITLE,
+                MediaStore.Audio.Media.ARTIST,
+                MediaStore.Audio.Media.DATA,
+                MediaStore.Audio.Media.ALBUM
+        };
+        final String sortOrder = MediaStore.Audio.AudioColumns.TITLE + " COLLATE LOCALIZED ASC";
+
+        Cursor cursor = null;
+        try {
+            Uri uri = android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+            cursor = getActivity().getContentResolver().query
+                    (uri, projection, selection, null, sortOrder);
+            if (cursor != null) {
+                cursor.moveToFirst();
+
+                while (!cursor.isAfterLast()) {
+                    String title = cursor.getString(0);
+                    String artist = cursor.getString(1);
+                    String path = cursor.getString(2);
+                    String album = cursor.getString(3);
+                    cursor.moveToNext();
+                    if (path != null && (path.endsWith(".mp3") ||
+                            path.endsWith(".flac") || path.endsWith(".m4a"))) {
+                        songNames.add(title);
+                        albumNames.add(album);
+                        artistNames.add(artist);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Log.e("TAG", e.toString());
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
     }
 }
 
