@@ -1,6 +1,5 @@
 package com.enterprises.wasp.musicstructureapp;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +17,6 @@ public class ArtistsFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -26,6 +24,5 @@ public class ArtistsFragment extends Fragment {
         textView.setText(R.string.hello_blank_fragment);
         return textView;
     }
-
 }
 
