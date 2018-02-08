@@ -30,7 +30,7 @@ public class Info {
     }
 
     public String getArtistName() {
-        return albumName;
+        return artistName;
     }
 }
 
