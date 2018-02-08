@@ -35,8 +35,13 @@ public class InfoAdapter extends ArrayAdapter<Info> {
         String temp;
 
         TextView name = listItem.findViewById(R.id.songs);
-        temp = "\nSong: " + currentSong.getSongNames() + "\nAlbum: " + currentSong.getAlbumName() +
-                "\nArtist: " + currentSong.getArtistName() + "\n";
+        if (currentSong.getSongNames() != null && currentSong.getAlbumName() != null &&
+                currentSong.getArtistName() != null)
+            temp = "\nSong: " + currentSong.getSongNames() + "\nAlbum: " +
+                    currentSong.getAlbumName() + "\nArtist: " + currentSong.getArtistName() + "\n";
+        else
+            temp = "\n" + currentSong.getArtistName() + "\n";
+
         name.setText(temp);
 
         return listItem;
