@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UniversalFragmentSelector" />
+        <activity
+            android:name=".UniversalFragmentSelector"
+            android:label="@string/tabs" />
     </application>
 
 </manifest>
