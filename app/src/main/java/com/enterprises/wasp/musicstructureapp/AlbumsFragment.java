@@ -69,7 +69,7 @@ public class AlbumsFragment extends Fragment {
                     String path = cursor.getString(1);
                     String album = cursor.getString(2);
                     cursor.moveToNext();
-                    if (path != null && !artistNames.contains(album)) {
+                    if (path != null && !albumNames.contains(album)) {
                         artistNames.add(artist);
                         albumNames.add(album);
                     }
