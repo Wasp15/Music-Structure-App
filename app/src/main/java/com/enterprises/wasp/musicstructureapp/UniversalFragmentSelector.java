@@ -7,9 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 
 public class UniversalFragmentSelector extends AppCompatActivity {
 
+    private static int itemPosition = 0;
+
+    public static void setItem(int item) {
+        itemPosition = item;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.view_pager_layout);
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = findViewById(R.id.viewpager);
@@ -20,6 +27,7 @@ public class UniversalFragmentSelector extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = findViewById(R.id.sliding_tabs);
+        viewPager.setCurrentItem(itemPosition);
         tabLayout.setupWithViewPager(viewPager);
     }
 }

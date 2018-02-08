@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent songsIntent = new Intent(MainActivity.this,
                         UniversalFragmentSelector.class);
+                UniversalFragmentSelector.setItem(0);
                 startActivity(songsIntent);
             }
         });
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent artistsIntent = new Intent(MainActivity.this,
                         UniversalFragmentSelector.class);
+                UniversalFragmentSelector.setItem(1);
                 startActivity(artistsIntent);
             }
         });
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent albumsIntent = new Intent(MainActivity.this,
                         UniversalFragmentSelector.class);
+                UniversalFragmentSelector.setItem(2);
                 startActivity(albumsIntent);
             }
         });
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent searchIntent = new Intent(MainActivity.this,
                         UniversalFragmentSelector.class);
+                UniversalFragmentSelector.setItem(3);
                 startActivity(searchIntent);
             }
         });
