@@ -102,7 +102,8 @@ public class SearchFragment extends Fragment {
                     String album = cursor.getString(3);
                     cursor.moveToNext();
                     if (path != null && (title.contains(searchString) ||
-                            album.contains(searchString) || artist.contains(searchString) ||
+                            album.contains(searchString) ||
+                            artist.contains(searchString) ||
                             path.contains(searchString))) {
                         songNames.add(title);
                         albumNames.add(album);

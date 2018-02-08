@@ -19,6 +19,16 @@ public class MainActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 
+        TextView nowPlaying = findViewById(R.id.now_playing_text_view);
+        nowPlaying.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent nowPlayingIntent = new Intent(MainActivity.this,
+                        NowPlayingActivity.class);
+                startActivity(nowPlayingIntent);
+            }
+        });
+
         TextView songs = findViewById(R.id.songs_text_view);
         songs.setOnClickListener(new View.OnClickListener() {
             @Override
