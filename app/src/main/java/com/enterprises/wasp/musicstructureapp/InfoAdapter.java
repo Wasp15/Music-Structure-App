@@ -39,6 +39,9 @@ public class InfoAdapter extends ArrayAdapter<Info> {
                 currentSong.getArtistName() != null)
             temp = "\nSong: " + currentSong.getSongNames() + "\nAlbum: " +
                     currentSong.getAlbumName() + "\nArtist: " + currentSong.getArtistName() + "\n";
+        else if (currentSong.getAlbumName() != null && currentSong.getArtistName() != null)
+            temp = "\nAlbum: " + currentSong.getAlbumName() + "\nArtist: " +
+                    currentSong.getArtistName() + "\n";
         else
             temp = "\n" + currentSong.getArtistName() + "\n";
 
