@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -28,9 +29,21 @@ public class SongsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.universal_container, container, false);
+        View rootView = inflater.inflate(R.layout.universal_layout, container, false);
         super.onCreate(savedInstanceState);
+        ListView listView;
+        InfoAdapter adapter;
         scanDeviceForMp3Files();
+
+        ArrayList<Info> iSongs = new ArrayList<>();
+
+        listView = rootView.findViewById(R.id.songList);
+        for (int i = 0; i < songNames.size(); i++) {
+            iSongs.add(new Info(songNames.get(i), artistNames.get(i), albumNames.get(i)));
+        }
+
+        adapter = new InfoAdapter(getActivity(), iSongs);
+        listView.setAdapter(adapter);
 
         return rootView;
     }
